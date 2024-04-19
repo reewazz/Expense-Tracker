@@ -1,0 +1,88 @@
+.dashboard{
+    padding-left: 8vw;
+    /* padding-right: 2vw; */
+    height: 100vh;
+    /* margin-left:  10vw; */
+    display: flex;
+    justify-content: space-between;
+    .main{
+      width: 70%;
+      .savings{
+        display: flex;
+        justify-content: space-between;
+        .savings-stats{
+          .bars{
+            display: flex;
+            align-items: center;
+            .bar{
+              padding: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .account-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    .new-card{
+      padding: 50px 20px;
+      border: 1px solid black;
+      border-style: dashed;
+      width: 24.5%;
+      text-align: center;
+    }
+    
+  
+  }
+  .cards{
+    display: flex;
+    /* justify-content: space-between; */
+  
+    .card{
+    
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid black;
+      width: 100%;
+      padding: 10px;
+      margin-right: 10px;
+      flex-direction: column;
+      .top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img{
+          height: 4vw;
+          width: 4vw;
+        }
+      }
+    }
+  }
+  .stats{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    padding: 0 2vw;
+    .inc-exp{
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  .scheduled-expenses{
+    margin-top: 4vh;
+    .scheduletable{
+      
+      display: flex;
+      flex-direction: column;
+      .transactions{
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        padding: .5vw;
+      }
+    }
+   
+  }

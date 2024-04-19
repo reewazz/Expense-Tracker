@@ -1,0 +1,56 @@
+.sidebar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* padding-left: 2vw; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    align-items: center;
+    border-right: 1px solid black;
+  /* z-index: 99; */
+    /* align-items: flex-end; */
+  .logoshort{
+    img{
+      height: 10vh;
+    width: 5vw;
+    }
+  }
+  
+    .nav-items{
+      
+      .nav-item{
+        display: flex;
+        flex-direction: column;
+        i{
+          padding: 16px;
+          font-size: 1.5rem;
+          transition: .3s all ease-in-out;
+          cursor: pointer;
+          border-radius: 8px;
+          &:hover{
+            background-color: coral;
+          }
+        }
+      }
+    }
+  }
+  .topbar{
+    height: 80px;
+    padding-left: 8vw;
+    padding-right: 1vw;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .extras{
+      display: flex;
+      align-items: center;
+      .extra{
+        padding: 10px;
+      }
+     
+    }
+  }
+  

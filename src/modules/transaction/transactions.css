@@ -1,0 +1,20 @@
+.transactions{
+    padding : 1vh 8vw;
+
+    .top{
+        display: flex;
+        justify-content: space-between;
+        .button{
+            button{
+                background: coral;
+                color: white;
+                padding: 8px 16px;
+                border-radius: 8px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+        }
+    }
+}
+.accounts{
+    padding: 1vh 8vw;
+}

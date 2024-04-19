@@ -6,6 +6,10 @@ import { Button, MantineProvider, createTheme } from '@mantine/core'
 import { Sidebar } from './modules/partials/Sidebar'
 import 'remixicon/fonts/remixicon.css'
 import { Dashboard } from './modules/accounts/Dashboard'
+import { Transactions } from './modules/transaction/Transactions'
+import { Accountlist } from './modules/accounts/Accountlist'
+
+
 // import { Button } from '@mantine/core'
 // import '@mantine/core/styles.css';
 
@@ -18,7 +22,10 @@ function App() {
   
 
   return (<>
-    <Dashboard/>
+    {/* <Dashboard/> */}
+    {/* <Transactions/> */}
+    <Accountlist/>
+    
     
 
     </>

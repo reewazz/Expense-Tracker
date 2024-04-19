@@ -19,12 +19,12 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-export default function DenseTable() {
+export default function TransactionTable() {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
-          <TableRow>
+          <TableRow >
             <TableCell>Statement</TableCell>
             <TableCell align="right">Category</TableCell>
             <TableCell align="right">Account&nbsp;(g)</TableCell>
