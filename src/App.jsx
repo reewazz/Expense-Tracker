@@ -8,7 +8,7 @@ import 'remixicon/fonts/remixicon.css'
 import { Dashboard } from './modules/accounts/Dashboard'
 import { Transactions } from './modules/transaction/Transactions'
 import { Accountlist } from './modules/accounts/Accountlist'
-
+import { Stats } from './modules/stats/stats'
 
 // import { Button } from '@mantine/core'
 // import '@mantine/core/styles.css';
@@ -24,7 +24,8 @@ function App() {
   return (<>
     {/* <Dashboard/> */}
     {/* <Transactions/> */}
-    <Accountlist/>
+    {/* <Accountlist/> */}
+    <Stats/>
     
     
 

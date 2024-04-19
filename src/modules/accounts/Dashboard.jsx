@@ -2,21 +2,14 @@ import { CardActionArea, CircularProgress, Card } from "@mui/material"
 import { Sidebar } from "../partials/Sidebar"
 // import { BarChart } from '@mantine/charts';
 // import Card from '@mui/material/Card';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import TransactionTable from "./TransactionTable"
 import './accounts.css'
+import {  BarCharts } from "../charts/Barchart"
 
 export const Dashboard = ()=> {
     
       
-    const data = [
-        { name: 'January', value: 10 },
-        { name: 'February', value: 15 },
-        { name: 'March', value: 20 },
-        { name: 'April', value: 25 },
-        { name: 'May', value: 30 },
-        { name: 'June', value: 35 },
-      ];
+  
     return(
         <div>
             <Sidebar/>
@@ -163,18 +156,10 @@ export const Dashboard = ()=> {
 
 </div>
                 </div>
-                <div className="stats">
-<p class="text-2xl font-bold text-black">Statistics last 6 months</p>
-
-                <BarChart width={500} height={300} data={data}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Bar dataKey="value" fill="coral" />
-    </BarChart>
-    <div className="inc-exp">
+                
+            <div className="stats">
+            <BarCharts/>
+                    <div className="inc-exp">
         <div className="inc">
         <h3 class="text-sm leading-6 font-medium text-gray-400">Income</h3>
                         <p class="text-xl font-bold text-black">Rs. 69,699</p>
@@ -229,7 +214,7 @@ export const Dashboard = ()=> {
    </div>
 </div>
     </div>
-                </div>
+            </div>
                 
             </div>
         </div>
