@@ -2,3 +2,9 @@
     padding: 1vh 8vw;
  
 }
+.charts{
+    padding: 5vh 1vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
