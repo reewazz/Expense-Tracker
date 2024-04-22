@@ -8,7 +8,11 @@ import 'remixicon/fonts/remixicon.css'
 import { Dashboard } from './modules/accounts/Dashboard'
 import { Transactions } from './modules/transaction/Transactions'
 import { Accountlist } from './modules/accounts/Accountlist'
+// import { Accountlist } from './modules/accounts/Accountlist'
+
 import { Stats } from './modules/stats/stats'
+import { Route, Routes } from 'react-router'
+import TransactionTable from './modules/accounts/TransactionTable'
 
 // import { Button } from '@mantine/core'
 // import '@mantine/core/styles.css';
@@ -22,10 +26,16 @@ function App() {
   
 
   return (<>
-    {/* <Dashboard/> */}
-    {/* <Transactions/> */}
-    {/* <Accountlist/> */}
-    <Stats/>
+  <Routes>
+  <Route exact path="/" element={<Dashboard />} />
+ <Route path="/transactions" element={<Transactions/>} />
+ <Route path="/stats" element={<Stats/>} />
+ <Route path="/accountlist" element={<Accountlist/>} />
+ <Route path="/transactiontable" element={<TransactionTable/>} />
+
+          
+  </Routes>
+  
     
     
 

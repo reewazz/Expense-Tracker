@@ -11,6 +11,13 @@ export const AppRoutes = ()=>{
         <Route path='/auth/*' element={ !token ? <AuthLayout/> : <Navigate to="/" />} />
         <Route path='/*' element={
           <div>404 page not found</div>
+          
         } />
+        <Route exact path="/" component={Home} />
+<Route path="/calendar" component={Calendar} />
+<Route path="/pages" component={Pages} />
+<Route path="/charts" component={Charts} />
+<Route path="/time" component={Time} />
+<Route path="/server" component={Server} />
       </Routes>
 }

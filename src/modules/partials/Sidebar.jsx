@@ -1,5 +1,6 @@
 import { Avatar } from "@mantine/core"
 import './sidebar.css'
+import { NavLink } from "react-router-dom"
 export const Sidebar = ()=> {
     return(
         <>
@@ -30,12 +31,19 @@ export const Sidebar = ()=> {
         </div>
         <div className="nav-items">
             <div className="nav-item">
-            <i class="ri-folder-2-line"></i>
-            <i class="ri-calendar-2-line"></i>
-            <i class="ri-pages-line"></i>
-            <i class="ri-bar-chart-2-line"></i>
-            <i class="ri-time-line"></i>
-            <i class="ri-server-line"></i>
+            <NavLink className="icons" to="/"  exact>
+            <i className="ri-folder-2-line "></i>
+        </NavLink>
+           <NavLink  className="icons" to = "/transactions" exact> <i class="ri-calendar-2-line "></i></NavLink>
+           <NavLink  className="icons" to = "/transactions" exact> <i className="ri-pages-line "></i></NavLink>
+           <NavLink  className="icons" to = "/stats" exact>             <i className="ri-bar-chart-2-line "></i></NavLink>
+           <NavLink  className="icons" to = "/transactiontable" exact>   <i className="ri-time-line"></i></NavLink>
+           <NavLink  className="icons" to = "/accountlist" exact>   <i className="ri-server-line "></i></NavLink>
+
+            
+
+          
+            
 
 
             </div>
@@ -47,3 +55,4 @@ export const Sidebar = ()=> {
     </>
     )
 }
+

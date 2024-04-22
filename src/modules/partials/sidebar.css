@@ -23,17 +23,18 @@
       .nav-item{
         display: flex;
         flex-direction: column;
-        i{
-          padding: 16px;
-          font-size: 1.5rem;
-          transition: .3s all ease-in-out;
-          cursor: pointer;
-          border-radius: 8px;
-          &:hover{
-            background-color: coral;
-          }
-        }
+       
       }
+    }
+  }
+  .icons{
+    padding: 16px;
+    font-size: 1.5rem;
+    transition: .3s all ease-in-out;
+    cursor: pointer;
+    border-radius: 8px;
+    &:hover{
+      background-color: coral;
     }
   }
   .topbar{
