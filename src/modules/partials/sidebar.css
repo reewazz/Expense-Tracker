@@ -48,8 +48,10 @@
     .extras{
       display: flex;
       align-items: center;
+      cursor: pointer;
       .extra{
         padding: 10px;
+       
       }
      
     }

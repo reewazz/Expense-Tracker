@@ -18,12 +18,12 @@ export const Dashboard = ()=> {
                 <div className="main">
                     <div className="savings">
                         <div className="savings-text">
-                        <p class="text-3xl font-bold text-black">Savings Rs. 6,000</p>
+                        <p class="text-2xl font-bold text-black">Savings Rs. 6,000</p>
                         <h3 class="text-sm leading-6 font-medium text-gray-400">Savings for this month so far</h3>
 
                         </div>
                         <div className="savings-stats">
-                        <p class="text-3xl font-bold text-black">Top Expenses</p>
+                        <p class="text-2xl font-bold text-black">Top Expenses</p>
                         <div className="bars">
                    <div className="bar"><CircularProgress variant="determinate" value={25} /></div>  
                    <div className="bar">
@@ -49,7 +49,7 @@ export const Dashboard = ()=> {
                 <div class="sm:flex sm:items-start">
                     <div class="text-center sm:mt-0 sm:ml-2 sm:text-left">
                         <h3 class="text-sm leading-6 font-medium text-gray-400">Total Balance</h3>
-                        <p class="text-3xl font-bold text-black">Rs. 69,699</p>
+                        <p class="text-xl font-bold text-black">Rs. 69,699</p>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@ export const Dashboard = ()=> {
                 <div class="sm:flex sm:items-start">
                     <div class="text-center sm:mt-0 sm:ml-2 sm:text-left">
                         <h3 class="text-sm leading-6 font-medium text-gray-400">Total Expenses</h3>
-                        <p class="text-3xl font-bold text-black">Rs. 6,969</p>
+                        <p class="text-xl font-bold text-black">Rs. 6,969</p>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@ export const Dashboard = ()=> {
                 <div class="sm:flex sm:items-start">
                     <div class="text-center sm:mt-0 sm:ml-2 sm:text-left">
                         <h3 class="text-sm leading-6 font-medium text-gray-400">Total Balance last 6 months</h3>
-                        <p class="text-3xl font-bold text-black">Rs. 69,000</p>
+                        <p class="text-xl font-bold text-black">Rs. 69,000</p>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@ export const Dashboard = ()=> {
 </div>
               </div>
 <div className="accounts">
-<p class="text-3xl font-bold text-black">Accounts</p>
+<p class="text-2xl font-bold text-black">Accounts</p>
 <div className="account-cards">
 <div className="cards">
 <div className="card">
@@ -88,8 +88,8 @@ export const Dashboard = ()=> {
 <img src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg" alt="" />
 </div>
 <div className="bottom">
-<p class="text-2xl font-bold text-black">Rs. 3000</p>
-<p class="text-xl font-bold text-grey">Rs. 3000</p>
+<p class="text-xl font-bold text-black">Rs. 3000</p>
+<p class="text-l font-bold text-grey">Rs. 3000</p>
 
 
 
@@ -104,8 +104,8 @@ export const Dashboard = ()=> {
 
 </div>
 <div className="bottom">
-<p class="text-2xl font-bold text-black">Rs. 3000</p>
-<p class="text-xl font-bold text-grey">Rs. 3000</p>
+<p class="text-xl font-bold text-black">Rs. 3000</p>
+<p class="text-l font-bold text-grey">Rs. 3000</p>
 
 
 
@@ -120,8 +120,8 @@ export const Dashboard = ()=> {
 
 </div>
 <div className="bottom">
-<p class="text-2xl font-bold text-black">Rs. 3000</p>
-<p class="text-xl font-bold text-grey">Rs. 3000</p>
+<p class="text-xl font-bold text-black">Rs. 3000</p>
+<p class="text-l font-bold text-grey">Rs. 3000</p>
 
 
 
@@ -136,8 +136,8 @@ export const Dashboard = ()=> {
 
 </div>
 <div className="bottom">
-<p class="text-2xl font-bold text-black">Rs. 3000</p>
-<p class="text-xl font-bold text-grey">Rs. 3000</p>
+<p class="text-xl font-bold text-black">Rs. 3000</p>
+<p class="text-l font-bold text-grey">Rs. 3000</p>
 
 
 
@@ -151,6 +151,7 @@ export const Dashboard = ()=> {
 
 </div>
 <div className="transaction">
+<p class="text-xl font-bold text-black pt-5">Latest Transactions</p>
 
     <TransactionTable/>
 

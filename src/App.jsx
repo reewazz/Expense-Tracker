@@ -13,6 +13,7 @@ import { Accountlist } from './modules/accounts/Accountlist'
 import { Stats } from './modules/stats/stats'
 import { Route, Routes } from 'react-router'
 import TransactionTable from './modules/accounts/TransactionTable'
+import { Schedule } from './modules/scheduleTransactions/Schedule'
 
 // import { Button } from '@mantine/core'
 // import '@mantine/core/styles.css';
@@ -31,7 +32,7 @@ function App() {
  <Route path="/transactions" element={<Transactions/>} />
  <Route path="/stats" element={<Stats/>} />
  <Route path="/accountlist" element={<Accountlist/>} />
- <Route path="/transactiontable" element={<TransactionTable/>} />
+ <Route path="/schedule" element={<Schedule/>} />
 
           
   </Routes>

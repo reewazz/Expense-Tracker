@@ -39,3 +39,10 @@ body{
 .read-the-docs {
   color: #888;
 }
+button{
+  background: coral;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

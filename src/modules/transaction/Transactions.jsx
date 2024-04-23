@@ -56,6 +56,7 @@ export const Transactions = () => {
               <div className="table">
                 <TransactionTable/>
               </div>
+              
     </div>
     </>
   );
