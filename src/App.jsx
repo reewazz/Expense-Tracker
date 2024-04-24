@@ -14,6 +14,8 @@ import { Stats } from './modules/stats/stats'
 import { Route, Routes } from 'react-router'
 import TransactionTable from './modules/accounts/TransactionTable'
 import { Schedule } from './modules/scheduleTransactions/Schedule'
+import { CalendarPage } from './pages/CalendarPage'
+import 'react-calendar/dist/Calendar.css';
 
 // import { Button } from '@mantine/core'
 // import '@mantine/core/styles.css';
@@ -30,6 +32,7 @@ function App() {
   <Routes>
   <Route exact path="/" element={<Dashboard />} />
  <Route path="/transactions" element={<Transactions/>} />
+ <Route path="/calendar" element={<CalendarPage/>} />
  <Route path="/stats" element={<Stats/>} />
  <Route path="/accountlist" element={<Accountlist/>} />
  <Route path="/schedule" element={<Schedule/>} />

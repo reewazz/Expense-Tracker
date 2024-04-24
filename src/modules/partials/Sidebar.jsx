@@ -39,7 +39,7 @@ export const Sidebar = () => {
             <NavLink className="icons" to="/" exact>
               <i className="ri-folder-2-line "></i>
             </NavLink>
-            <NavLink className="icons" to="/transactions" exact>
+            <NavLink className="icons" to="/calendar" exact>
               {" "}
               <i className="ri-calendar-2-line "></i>
             </NavLink>
