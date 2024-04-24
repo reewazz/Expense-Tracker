@@ -161,6 +161,7 @@ export const Stats = () => {
                 { value: 15, color: "grape" },
               ]}
             />
+            
           </div>
           <div className="barchart">
             <BarCharts />

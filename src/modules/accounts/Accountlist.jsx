@@ -264,12 +264,14 @@ export const Accountlist = () => {
               <TextField label="Account Type" value={name} onChange={(e) => setName(e.target.value)} variant="outlined" fullWidth />
               <TextField label="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} variant="outlined" fullWidth />
               <TextField label="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} variant="outlined" fullWidth />
+             
             </DialogContent>
             <DialogActions>
               <Button autoFocus onClick={handleClose}>Cancel</Button>
               <Button onClick={handleAddCard}>Add</Button>
             </DialogActions>
           </Dialog>
+          
         </div>
       </div>
     </>

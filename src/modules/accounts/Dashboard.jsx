@@ -8,7 +8,8 @@ import {  BarCharts } from "../charts/Barchart"
 
 export const Dashboard = ()=> {
     
-      
+   
+    
   
     return(
         <div>
