@@ -1,21 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Button, MantineProvider, createTheme } from '@mantine/core'
-import { Sidebar } from './modules/partials/Sidebar'
-import 'remixicon/fonts/remixicon.css'
-import { Dashboard } from './modules/accounts/Dashboard'
-import { Transactions } from './modules/transaction/Transactions'
-import { Accountlist } from './modules/accounts/Accountlist'
+import "./App.css";
+// import { createTheme } from "@mantine/core";
+// import { Sidebar } from "./modules/partials/Sidebar";
+import "remixicon/fonts/remixicon.css";
+import { Dashboard } from "./modules/accounts/Dashboard";
+import { Transactions } from "./modules/transaction/Transactions";
+import { Accountlist } from "./modules/accounts/Accountlist";
 // import { Accountlist } from './modules/accounts/Accountlist'
 
-import { Stats } from './modules/stats/stats'
-import { Route, Routes } from 'react-router'
-import TransactionTable from './modules/accounts/TransactionTable'
-import { Schedule } from './modules/scheduleTransactions/Schedule'
-import { CalendarPage } from './pages/CalendarPage'
-import 'react-calendar/dist/Calendar.css';
+import { Stats } from "./modules/stats/stats";
+import { Route, Routes } from "react-router";
+// import TransactionTable from "./modules/accounts/TransactionTable";
+import { Schedule } from "./modules/scheduleTransactions/Schedule";
+// import { CalendarPage } from "./pages/CalendarPage";
+import "react-calendar/dist/Calendar.css";
+// import Login from "./pages/Login";
+import { Signup } from "./modules/authentication/Signup";
+import { Profile } from "./modules/profile/Profile";
 
 // import { Button } from '@mantine/core'
 // import '@mantine/core/styles.css';
@@ -23,28 +23,18 @@ import 'react-calendar/dist/Calendar.css';
 function App() {
   // const [count, setCount] = useState(0)
 
-  const theme = createTheme({
-    /** Put your mantine theme override here */
-  });
-  
-
-  return (<>
-  <Routes>
-  <Route exact path="/" element={<Dashboard />} />
- <Route path="/transactions" element={<Transactions/>} />
- <Route path="/calendar" element={<CalendarPage/>} />
- <Route path="/stats" element={<Stats/>} />
- <Route path="/accountlist" element={<Accountlist/>} />
- <Route path="/schedule" element={<Schedule/>} />
-
-          
-  </Routes>
-  
-    
-    
-
+  return (
+    <>
+      <Routes>
+        <Route exact path="/" element={<Dashboard />} />
+        <Route path="/transactions" element={<Transactions />} />
+        <Route path="/calendar" element={<Signup />} />
+        <Route path="/stats" element={<Stats />} />
+        <Route path="/accountlist" element={<Accountlist />} />
+        <Route path="/schedule" element={<Schedule />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
     </>
-  )
+  );
 }
-
-export default App
+export default App;

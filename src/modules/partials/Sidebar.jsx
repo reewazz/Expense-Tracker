@@ -1,4 +1,4 @@
-import { Avatar } from "@mantine/core";
+// import { Avatar } from "@mantine/core";
 import "./sidebar.css";
 import { NavLink } from "react-router-dom";
 export const Sidebar = () => {
@@ -6,9 +6,7 @@ export const Sidebar = () => {
     <>
       <div className="topbar">
         <div className="gm">
-      
-<p class="text-xl font-bold text-black">Good Morning, Riwaj</p>
-
+          <p className="text-xl font-bold text-black">Good Morning, Riwaj</p>
         </div>
         <div className="extras">
           <div className="extra">
@@ -20,11 +18,14 @@ export const Sidebar = () => {
           <div className="extra">
             <div className="avatar">
               <div className="flex -space-x-2 overflow-hidden">
-                <img
-                  className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                />
+                <NavLink to="/profile" exact>
+                  {" "}
+                  <img
+                    className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt=""
+                  />
+                </NavLink>
               </div>
             </div>
           </div>

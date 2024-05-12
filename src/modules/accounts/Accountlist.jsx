@@ -21,7 +21,7 @@
 //     },
 //   }));
 // export const Accountlist = ()=>{
-  
+
 //       const [open, setOpen] = React.useState(false);
 
 //   const handleClickOpen = () => {
@@ -34,7 +34,7 @@
 //         <>
 
 //         <Sidebar/>
-//         <div className="accounts-container"> 
+//         <div className="accounts-container">
 // <p class="text-2xl font-bold text-black">Accounts</p>
 
 // <div className="account-cards">
@@ -56,8 +56,6 @@
 // <i class="ri-delete-bin-6-line"></i>
 // </div>
 
-
-
 // </div>
 
 // </div>
@@ -78,8 +76,6 @@
 // <i class="ri-delete-bin-6-line"></i>
 // </div>
 
-
-
 // </div>
 
 // </div>
@@ -100,8 +96,6 @@
 // <i class="ri-delete-bin-6-line"></i>
 // </div>
 
-
-
 // </div>
 
 // </div>
@@ -121,8 +115,6 @@
 // <i class="ri-pencil-line"></i>
 // <i class="ri-delete-bin-6-line"></i>
 // </div>
-
-
 
 // </div>
 
@@ -157,7 +149,7 @@
 //           <CloseIcon />
 //         </IconButton>
 //         <DialogContent dividers>
-         
+
 //          <div className="form">
 //             <div className="img-area">
 //             <div class="flex -space-x-2 overflow-hidden">
@@ -184,31 +176,36 @@
 
 // </div>
 
-
 // </div>
 //         </div>
 //         </>
 //     )
 // }
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Sidebar } from "../partials/Sidebar";
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 import { TextField } from "@mui/material";
-import './accounts.css'
+import MenuItem from "@mui/material/MenuItem";
+import "./accounts.css";
 
 export const Accountlist = () => {
   const [open, setOpen] = useState(false);
-  const [name, setName] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [amount, setAmount] = useState('');
+  const [name, setName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [amount, setAmount] = useState("");
   const [cards, setCards] = useState([
-    { name: "NIMB", imageUrl: "https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg", amount: "3000" },
+    {
+      name: "NIMB",
+      imageUrl:
+        "https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg",
+      amount: "3000",
+    },
     // Add more cards as needed
   ]);
 
@@ -231,7 +228,20 @@ export const Accountlist = () => {
     setCards([...cards, newCard]);
     setOpen(false); // Close the popup after adding the card
   };
- 
+  const currencies = [
+    {
+      value: "Cash",
+      label: "Cash",
+    },
+    {
+      value: "Bank",
+      label: "Bank",
+    },
+    {
+      value: "Digital wallet",
+      label: "Digital wallet",
+    },
+  ];
 
   // const handleEdit = (index, newData) => {
   //   const updatedCards = [...cards];
@@ -246,13 +256,21 @@ export const Accountlist = () => {
         <div className="account-cards">
           {cards.map((card, index) => (
             <div className="cards" key={index}>
-              <Card name={card.name} imageUrl={card.imageUrl} amount={card.amount} onDelete={() => handleDelete(index)}
-                />
+              <Card
+                name={card.name}
+                imageUrl={card.imageUrl}
+                amount={card.amount}
+                onDelete={() => handleDelete(index)}
+              />
             </div>
           ))}
         </div>
         <div className="new-card">
-          <Button style={{"margin" : "20px"}} variant="outlined" onClick={handleClickOpen}>
+          <Button
+            style={{ margin: "20px" }}
+            variant="outlined"
+            onClick={handleClickOpen}
+          >
             <p>Add Account</p>
           </Button>
           <Dialog onClose={handleClose} open={open}>
@@ -261,17 +279,48 @@ export const Accountlist = () => {
               <CloseIcon />
             </IconButton>
             <DialogContent dividers>
-              <TextField label="Account Type" value={name} onChange={(e) => setName(e.target.value)} variant="outlined" fullWidth />
-              <TextField label="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} variant="outlined" fullWidth />
-              <TextField label="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} variant="outlined" fullWidth />
-             
+              <TextField
+                label="Image URL"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+                variant="outlined"
+                fullWidth
+              />
+              <TextField
+                label="Account Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                variant="outlined"
+                fullWidth
+              />
+              <TextField
+                label="Amount"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                variant="outlined"
+                fullWidth
+              />
+              <TextField
+                id="outlined-select-currency"
+                select
+                label=" Type"
+                // defaultValue="EUR"
+                helperText="Please select your account type"
+              >
+                {currencies.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
             </DialogContent>
             <DialogActions>
-              <Button autoFocus onClick={handleClose}>Cancel</Button>
+              <Button autoFocus onClick={handleClose}>
+                Cancel
+              </Button>
               <Button onClick={handleAddCard}>Add</Button>
             </DialogActions>
           </Dialog>
-          
         </div>
       </div>
     </>
@@ -279,7 +328,6 @@ export const Accountlist = () => {
 };
 
 const Card = ({ name, imageUrl, amount, onDelete }) => {
-  
   return (
     <div className="card">
       <div className="top">

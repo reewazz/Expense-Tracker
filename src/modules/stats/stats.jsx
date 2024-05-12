@@ -1,62 +1,68 @@
-import { PieChart } from "@mui/x-charts/PieChart";
+// import { PieChart } from "@mui/x-charts/PieChart";
 import { BarCharts } from "../charts/Barchart";
 import { Sidebar } from "../partials/Sidebar";
-import { Button, RingProgress, Text } from "@mantine/core";
+import { RingProgress } from "@mantine/core";
 import "./stats.css";
 export const Stats = () => {
   return (
     <>
       <Sidebar />
       <div className="stats-container">
-        <p class="text-xl font-bold text-black">Overall Stats</p>
+        <p className="text-xl font-bold text-black">Overall Stats</p>
 
         <div className="expenditure">
-          <div class="max-w-full mx-4 sm:mx-auto sm:px-6 lg:px-2">
-            <div class="sm:flex sm:space-x-4">
-              <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
-                <div class="bg-white p-5">
-                  <div class="sm:flex sm:items-start">
-                    <div class="text-center sm:mt-0 sm:ml-2 sm:text-left">
-                      <h3 class="text-sm leading-6 font-medium text-gray-400">
+          <div className="max-w-full mx-4 sm:mx-auto sm:px-6 lg:px-2">
+            <div className="sm:flex sm:space-x-4">
+              <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
+                <div className="bg-white p-5">
+                  <div className="sm:flex sm:items-start">
+                    <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
+                      <h3 className="text-sm leading-6 font-medium text-gray-400">
                         Total Balance
                       </h3>
-                      <p class="text-3xl font-bold text-black">Rs. 69,699</p>
+                      <p className="text-3xl font-bold text-black">
+                        Rs. 69,699
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
-                <div class="bg-white p-5">
-                  <div class="sm:flex sm:items-start">
-                    <div class="text-center sm:mt-0 sm:ml-2 sm:text-left">
-                      <h3 class="text-sm leading-6 font-medium text-gray-400">
+              <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
+                <div className="bg-white p-5">
+                  <div className="sm:flex sm:items-start">
+                    <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
+                      <h3 className="text-sm leading-6 font-medium text-gray-400">
                         Total Expenses
                       </h3>
-                      <p class="text-3xl font-bold text-black">Rs. 6,969</p>
+                      <p className="text-3xl font-bold text-black">Rs. 6,969</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
-                <div class="bg-white p-5">
-                  <div class="sm:flex sm:items-start">
-                    <div class="text-center sm:mt-0 sm:ml-2 sm:text-left">
-                      <h3 class="text-sm leading-6 font-medium text-gray-400">
-                        Total Balance last 6 months
+              <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
+                <div className="bg-white p-5">
+                  <div className="sm:flex sm:items-start">
+                    <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
+                      <h3 className="text-sm leading-6 font-medium text-gray-400">
+                        Total Savings
                       </h3>
-                      <p class="text-3xl font-bold text-black">Rs. 69,000</p>
+                      <p className="text-3xl font-bold text-black">
+                        Rs. 69,000
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
-                <div class="bg-white p-5">
-                  <div class="sm:flex sm:items-start">
-                    <div class="text-center sm:mt-0 sm:ml-2 sm:text-left">
-                      <h3 class="text-sm leading-6 font-medium text-gray-400">
-                        Total Balance last 6 months
+              <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
+                <div className="bg-white p-5">
+                  <div className="sm:flex sm:items-start">
+                    <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
+                      <h3 className="text-sm leading-6 font-medium text-gray-400">
+                        Max Exp: Insurance
                       </h3>
-                      <p class="text-3xl font-bold text-black">Rs. 69,000</p>
+                      <p className="text-3xl font-bold text-black">
+                        Rs. 69,000
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -89,7 +95,7 @@ export const Stats = () => {
           </div>
           <div className="card">
             <div className="top">
-              <p class="text-xl font-bold text-black">Esewa</p>
+              <p className="text-xl font-bold text-black">Esewa</p>
               <img
                 src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
                 alt=""
@@ -108,7 +114,7 @@ export const Stats = () => {
           </div>
           <div className="card">
             <div className="top">
-              <p class="text-xl font-bold text-black">Esewa</p>
+              <p className="text-xl font-bold text-black">Esewa</p>
               <img
                 src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
                 alt=""
@@ -127,7 +133,7 @@ export const Stats = () => {
           </div>
           <div className="card">
             <div className="top">
-              <p class="text-xl font-bold text-black">Esewa</p>
+              <p className="text-xl font-bold text-black">Esewa</p>
               <img
                 src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
                 alt=""
@@ -147,21 +153,19 @@ export const Stats = () => {
         </div>
         <div className="charts">
           <div className="piechart">
-            <RingProgress
-            size={140}
-              label={
-                <Text size="xs" ta="center">
-                  Application data usage
-                </Text>
-              }
+            <p className="text-2xl font-bold text-black">
+              Expense Distribution this month
+            </p>
 
+            <RingProgress
+              size={350}
+              thickness={50}
               sections={[
-                { value: 40, color: "cyan" },
-                { value: 15, color: "orange" },
-                { value: 15, color: "grape" },
+                { value: 40, color: "cyan", tooltip: "Documents 40 Gb" },
+                { value: 25, color: "orange", tooltip: "Apps  25 Gb" },
+                { value: 15, color: "grape", tooltip: "Other  15 Gb" },
               ]}
             />
-            
           </div>
           <div className="barchart">
             <BarCharts />

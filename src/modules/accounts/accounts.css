@@ -1,120 +1,115 @@
-.dashboard{
-    padding-left: 8vw;
-    /* padding-right: 2vw; */
-    height: 100vh;
-    /* margin-left:  10vw; */
-    display: flex;
-    justify-content: space-between;
-    .main{
-      width: 70%;
-      .savings{
-        display: flex;
-        justify-content: space-between;
-        .savings-stats{
-          .bars{
-            display: flex;
-            align-items: center;
-            .bar{
-              padding: 10px;
-            }
-          }
-        }
-      }
-    }
-  }
-  .account-cards{
-    display: flex;
-    flex-direction: column;
-    gap: 3vh;
-    .new-card{
-      padding: 50px 20px;
-      border: 1px solid black;
-      border-style: dashed;
-      width: 24.5%;
-      text-align: center;
-    }
-    
-  
-  }
-  .cards{
-    display: flex;
-    justify-content: space-between;
-  
-    .card{
+.dashboard {
+  padding-left: 8vw;
+  /* padding-right: 2vw; */
+  height: 100vh;
+  /* margin-left:  10vw; */
+  display: flex;
+  justify-content: space-between;
+  .main {
+    width: 70%;
+    .savings {
       display: flex;
       justify-content: space-between;
-      border: 1px solid black;
-      width: 30%;
-      padding: 10px;
-      margin-right: 10px;
-      flex-direction: column;
-      .top{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        object-fit: cover;
-        img{
-          height: 3vw;
-          width: 3vw;
-        }
-        
-      }
-      .bottom{
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        i{
-          font-size: 1.5rem;
-          padding: 2px;
-          transition: .3s all ease-in-out;
-          &:hover{
-            font-size: 1.8rem;
+      .savings-stats {
+        .bars {
+          display: flex;
+          align-items: center;
+          .bar {
+            padding: 10px;
           }
         }
       }
     }
   }
-  .stats{
+}
+.account-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  .new-card {
+    padding: 50px 20px;
+    border: 1px solid black;
+    border-style: dashed;
+    width: 24.5%;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-around; */
-    padding: 0 2vw;
-    .inc-exp{
-      display: flex;
-      justify-content: space-around;
-    }
   }
-  .scheduled-expenses{
-    margin-top: 4vh;
-    .scheduletable{
-      
+}
+.cards {
+  display: flex;
+  justify-content: space-between;
+
+  .card {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    width: 30%;
+    padding: 10px;
+    margin-right: 10px;
+    flex-direction: column;
+    .top {
       display: flex;
-      flex-direction: column;
-      .transactions{
-        text-align: left;
-        display: flex;
-        justify-content: space-between;
-        padding: .5vw;
+      justify-content: space-between;
+      align-items: center;
+      object-fit: cover;
+      img {
+        height: 3vw;
+        width: 3vw;
       }
     }
-   
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      i {
+        font-size: 1.5rem;
+        padding: 2px;
+        transition: 0.3s all ease-in-out;
+        &:hover {
+          font-size: 1.8rem;
+        }
+      }
+    }
   }
-  
-.form{
-  height: 50vh;
- width: 100vw;
- display: flex;
- /* gap: 2vw; */
- /* align-items: center; */
-
- .text-area{
+}
+.stats {
+  text-align: center;
   display: flex;
-  /* margin-left: 5vw; */
   flex-direction: column;
-  justify-content: space-around;
-  input{
-    border: 1px solid black;
+  /* justify-content: space-around; */
+  padding: 0 2vw;
+  .inc-exp {
+    display: flex;
+    justify-content: space-around;
   }
- }
+}
+.scheduled-expenses {
+  margin-top: 4vh;
+  .scheduletable {
+    display: flex;
+    flex-direction: column;
+    .transactions {
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5vw;
+    }
+  }
+}
+
+.form {
+  height: 50vh;
+  width: 100vw;
+  display: flex;
+  /* gap: 2vw; */
+  /* align-items: center; */
+
+  .text-area {
+    display: flex;
+    /* margin-left: 5vw; */
+    flex-direction: column;
+    justify-content: space-around;
+    input {
+      border: 1px solid black;
+    }
+  }
 }
