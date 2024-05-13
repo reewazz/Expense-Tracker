@@ -1,0 +1,73 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px; /* Adjust width as needed */
+  max-width: 90%; /* Ensures responsiveness */
+}
+
+.close-button {
+  float: right;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+  padding: 8px;
+  margin: 8px 0;
+  /* border: 1px solid #ccc; */
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.09);
+}
+
+input[type="file"] {
+  margin: 8px 0;
+}
+
+button {
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background-color: coral;
+  color: white;
+}
+
+button[type="button"] {
+  background-color: white;
+  color: coral;
+}
+.radio {
+  display: flex;
+  justify-content: space-evenly;
+}
+.selection {
+  display: flex;
+  justify-content: space-between;
+}
