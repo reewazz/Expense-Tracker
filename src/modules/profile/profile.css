@@ -32,3 +32,33 @@
     }
   }
 }
+.user-container {
+  padding: 1vh 8vw;
+  img {
+    height: 10vw;
+    width: 8vw;
+    border-radius: 8px;
+  }
+  .min-nav {
+    .items {
+      display: flex;
+      .item {
+        padding: 16px;
+      }
+    }
+  }
+  .form-area {
+    display: flex;
+    justify-content: space-between;
+    padding: 2vw;
+    .inputs {
+      padding: 0 2vw;
+      .input {
+        padding: 1vh 0;
+      }
+      button {
+        padding: 10px;
+      }
+    }
+  }
+}
