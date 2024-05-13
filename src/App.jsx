@@ -16,7 +16,7 @@ import "react-calendar/dist/Calendar.css";
 // import Login from "./pages/Login";
 import { Signup } from "./modules/authentication/Signup";
 import { Profile } from "./modules/profile/Profile";
-import Modal from "./modules/profile/Modal";
+import { UserSettings } from "./modules/profile/UserSettings";
 
 // import { Button } from '@mantine/core'
 // import '@mantine/core/styles.css';
@@ -34,7 +34,7 @@ function App() {
         <Route path="/accountlist" element={<Accountlist />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/user-settings" element={<Modal />} />
+        <Route path="/user-settings" element={<UserSettings />} />
       </Routes>
     </>
   );

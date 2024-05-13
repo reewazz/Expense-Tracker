@@ -9,11 +9,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 // Ensure this import path matches your CSS file's location
 
-function createData(statement, category, account, amount) {
-  return { statement, category, account, amount };
+function createData(statement, category, account, amount, period, recursion) {
+  return { statement, category, account, amount, period, recursion };
 }
 
-function Modal() {
+function TableModal() {
   const [rows, setRows] = useState([
     createData("Family Dinner at Thasang Thakali", "Food", 6.0, 24),
     createData("Ice cream sandwich", "Rent", 237, 37),
@@ -27,6 +27,8 @@ function Modal() {
     category: "",
     account: "",
     amount: "",
+    period: "",
+    recursion: "",
   });
 
   const handleChange = (e) => {
@@ -40,7 +42,9 @@ function Modal() {
       formData.statement,
       formData.category,
       formData.account,
-      formData.amount
+      formData.amount,
+      formData.period,
+      formData.recursion
     );
     setRows([...rows, newRow]);
     setFormData({
@@ -48,6 +52,8 @@ function Modal() {
       category: "",
       account: "",
       amount: "",
+      period: "",
+      recursion: "",
     });
     toggleModal();
   };
@@ -74,27 +80,7 @@ function Modal() {
                 value={formData.statement}
                 onChange={handleChange}
               />
-              <input type="date" />
-              <div className="radio">
-                <div className="radio-item">
-                  <input
-                    type="radio"
-                    id="income"
-                    name="transactionType"
-                    value="income"
-                  />
-                  <label htmlFor="income">Income</label>
-                </div>
-                <div className="radio-item">
-                  <input
-                    type="radio"
-                    id="expense"
-                    name="transactionType"
-                    value="expense"
-                  />
-                  <label htmlFor="expense">Expense</label>
-                </div>
-              </div>
+
               <div className="selection">
                 <select
                   name="category"
@@ -124,7 +110,29 @@ function Modal() {
                 onChange={handleChange}
                 placeholder="Amount"
               />
-              <input type="file" />
+              <div className="selection">
+                <select
+                  name="category"
+                  value={formData.category}
+                  onChange={handleChange}
+                >
+                  <option>Period</option>
+                  <option>Food</option>
+                  <option>Rent</option>
+                  <option> Transport</option>
+                </select>
+                <select
+                  name="recursion"
+                  value={formData.recursion}
+                  onChange={handleChange}
+                >
+                  <option>Recursion</option>
+                  <option>Daily</option>
+                  <option>Weekly</option>
+                  <option>Monthly</option>
+                </select>
+              </div>
+
               <button type="submit">Save</button>
               <button type="button" onClick={toggleModal}>
                 Cancel
@@ -139,7 +147,7 @@ function Modal() {
             <TableRow>
               <TableCell>Statement</TableCell>
               <TableCell align="right">Category</TableCell>
-              <TableCell align="right">Account&nbsp;(g)</TableCell>
+              <TableCell align="right">Recursion&nbsp;(g)</TableCell>
               <TableCell align="right">Amount&nbsp;(g)</TableCell>
             </TableRow>
           </TableHead>
@@ -155,7 +163,7 @@ function Modal() {
                 </TableCell>
 
                 <TableCell align="right">{row.category}</TableCell>
-                <TableCell align="right">{row.account}</TableCell>
+                <TableCell align="right">{row.recursion}</TableCell>
                 <TableCell align="right">{row.amount}</TableCell>
               </TableRow>
             ))}
@@ -166,4 +174,4 @@ function Modal() {
   );
 }
 
-export default Modal;
+export default TableModal;
