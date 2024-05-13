@@ -54,6 +54,7 @@
     .inputs {
       padding: 0 2vw;
       .input {
+        background: transparent;
         padding: 1vh 0;
       }
       button {

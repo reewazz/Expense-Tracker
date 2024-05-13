@@ -87,9 +87,20 @@ export const Stats = () => {
                 <p className="text-2xl font-bold text-black">Rs. 3000</p>
                 <p className="text-xl font-bold text-grey">Rs. 3000</p>
               </div>
-              <div className="buttons">
-                <i className="ri-pencil-line"></i>
-                <i className="ri-delete-bin-6-line"></i>
+            </div>
+          </div>
+          <div className="card">
+            <div className="top">
+              <p className="text-xl font-bold text-black">Esewa</p>
+              <img
+                src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
+                alt=""
+              />
+            </div>
+            <div className="bottom">
+              <div className="texts">
+                <p className="text-2xl font-bold text-black">Rs. 3000</p>
+                <p className="text-xl font-bold text-grey">Rs. 3000</p>
               </div>
             </div>
           </div>
@@ -106,10 +117,6 @@ export const Stats = () => {
                 <p className="text-2xl font-bold text-black">Rs. 3000</p>
                 <p className="text-xl font-bold text-grey">Rs. 3000</p>
               </div>
-              <div className="buttons">
-                <i className="ri-pencil-line"></i>
-                <i className="ri-delete-bin-6-line"></i>
-              </div>
             </div>
           </div>
           <div className="card">
@@ -124,29 +131,6 @@ export const Stats = () => {
               <div className="texts">
                 <p className="text-2xl font-bold text-black">Rs. 3000</p>
                 <p className="text-xl font-bold text-grey">Rs. 3000</p>
-              </div>
-              <div className="buttons">
-                <i className="ri-pencil-line"></i>
-                <i className="ri-delete-bin-6-line"></i>
-              </div>
-            </div>
-          </div>
-          <div className="card">
-            <div className="top">
-              <p className="text-xl font-bold text-black">Esewa</p>
-              <img
-                src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
-                alt=""
-              />
-            </div>
-            <div className="bottom">
-              <div className="texts">
-                <p className="text-2xl font-bold text-black">Rs. 3000</p>
-                <p className="text-xl font-bold text-grey">Rs. 3000</p>
-              </div>
-              <div className="buttons">
-                <i className="ri-pencil-line"></i>
-                <i className="ri-delete-bin-6-line"></i>
               </div>
             </div>
           </div>
