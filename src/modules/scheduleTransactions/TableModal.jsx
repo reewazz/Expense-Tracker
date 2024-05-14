@@ -15,11 +15,13 @@ function createData(statement, category, account, amount, period, recursion) {
 
 function TableModal() {
   const [rows, setRows] = useState([
-    createData("Family Dinner at Thasang Thakali", "Food", 6.0, 24),
-    createData("Ice cream sandwich", "Rent", 237, 37),
-    createData("Eclair", 262, 16.0, 24),
-    createData("Cupcake", 305, 3.7, 67),
-    createData("Gingerbread", 356, 16.0, 49),
+    createData(
+      "Family Dinner at Thasang Thakali",
+      "Food",
+      "Weekly",
+      "Weekly",
+      1000
+    ),
   ]);
 
   const [formData, setFormData] = useState({
@@ -80,7 +82,7 @@ function TableModal() {
                 value={formData.statement}
                 onChange={handleChange}
               />
-
+              <input type="date" />
               <div className="selection">
                 <select
                   name="category"
@@ -117,8 +119,8 @@ function TableModal() {
                   onChange={handleChange}
                 >
                   <option>Period</option>
-                  <option>Food</option>
-                  <option>Rent</option>
+                  <option>Weekly</option>
+                  <option>Monthly</option>
                   <option> Transport</option>
                 </select>
                 <select

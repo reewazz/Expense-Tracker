@@ -5,8 +5,18 @@ import { Sidebar } from "../partials/Sidebar";
 import TransactionTable from "./TransactionTable";
 import "./accounts.css";
 import { BarCharts } from "../charts/Barchart";
+import { MainSchedule } from "../scheduleTransactions/MainSchedule";
 
 export const Dashboard = () => {
+  const cards = [
+    // This should ideally come from a state or props if it's dynamic
+    {
+      name: "NIMB",
+      imageUrl:
+        "https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg",
+      amount: "3000",
+    },
+  ];
   return (
     <div>
       <Sidebar />
@@ -89,8 +99,43 @@ export const Dashboard = () => {
           <div className="accounts">
             <p className="text-2xl font-bold text-black">Accounts</p>
             <div className="account-cards">
-              <div className="cards">
-                <div className="card">
+              {cards.map((card, index) => (
+                <div className="cards" key={index}>
+                  <div className="card">
+                    <div className="top">
+                      <p className="text-xl font-bold text-black">
+                        {card.name}
+                      </p>
+                      <img
+                        src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div className="bottom">
+                      <p className="text-xl font-bold text-black">
+                        {" "}
+                        {card.amount}{" "}
+                      </p>
+                      <p className="text-l font-bold text-grey">Rs. 3000</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* <div className="card">
+                <div className="top">
+                  <p className="text-xl font-bold text-black">Esewa</p>
+                  <img
+                    src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
+                    alt=""
+                  />
+                </div>
+                <div className="bottom">
+                  <p className="text-xl font-bold text-black">Rs. 3000</p>
+                  <p className="text-l font-bold text-grey">Rs. 3000</p>
+                </div>
+              </div> */}
+              {/* <div className="card">
                   <div className="top">
                     <p className="text-xl font-bold text-black">Esewa</p>
                     <img
@@ -102,49 +147,10 @@ export const Dashboard = () => {
                     <p className="text-xl font-bold text-black">Rs. 3000</p>
                     <p className="text-l font-bold text-grey">Rs. 3000</p>
                   </div>
-                </div>
-                <div className="card">
-                  <div className="top">
-                    <p className="text-xl font-bold text-black">Esewa</p>
-                    <img
-                      src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="bottom">
-                    <p className="text-xl font-bold text-black">Rs. 3000</p>
-                    <p className="text-l font-bold text-grey">Rs. 3000</p>
-                  </div>
-                </div>
-                <div className="card">
-                  <div className="top">
-                    <p className="text-xl font-bold text-black">Esewa</p>
-                    <img
-                      src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="bottom">
-                    <p className="text-xl font-bold text-black">Rs. 3000</p>
-                    <p className="text-l font-bold text-grey">Rs. 3000</p>
-                  </div>
-                </div>
-                <div className="card">
-                  <div className="top">
-                    <p className="text-xl font-bold text-black">Esewa</p>
-                    <img
-                      src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="bottom">
-                    <p className="text-xl font-bold text-black">Rs. 3000</p>
-                    <p className="text-l font-bold text-grey">Rs. 3000</p>
-                  </div>
-                </div>
-              </div>
+                </div> */}
             </div>
           </div>
+
           <div className="transaction">
             <p className="text-xl font-bold text-black pt-5">
               Latest Transactions
@@ -171,53 +177,7 @@ export const Dashboard = () => {
             </div>
           </div>
           <div className="scheduled-expenses">
-            <p className="text-xl font-bold text-black">Scheduled Expenses</p>
-            <div className="scheduletable">
-              <div className="transactions">
-                <div className="statement">
-                  <p className="text font-bold text-black">Bike Loan</p>
-                  <h3 className="text-sm leading-6 font-medium text-gray-400">
-                    Expenses
-                  </h3>
-                </div>
-                <div className="amount">
-                  <p className="text font-bold text-black">Rs. 69,699</p>
-                </div>
-              </div>
-              <div className="transactions">
-                <div className="statement">
-                  <p className="text font-bold text-black">House Rent</p>
-                  <h3 className="text-sm leading-6 font-medium text-gray-400">
-                    Expenses
-                  </h3>
-                </div>
-                <div className="amount">
-                  <p className="text font-bold text-black">Rs. 69,699</p>
-                </div>
-              </div>
-              <div className="transactions">
-                <div className="statement">
-                  <p className="text font-bold text-black">Finance Loan</p>
-                  <h3 className="text-sm leading-6 font-medium text-gray-400">
-                    Expenses
-                  </h3>
-                </div>
-                <div className="amount">
-                  <p className="text font-bold text-black">Rs. 69,699</p>
-                </div>
-              </div>
-              <div className="transactions">
-                <div className="statement">
-                  <p className="text font-bold text-black">Insurance</p>
-                  <h3 className="text-sm leading-6 font-small text-gray-400">
-                    Expenses
-                  </h3>
-                </div>
-                <div className="amount">
-                  <p className="text font-bold text-black">Rs. 69,699</p>
-                </div>
-              </div>
-            </div>
+            <MainSchedule />
           </div>
         </div>
       </div>

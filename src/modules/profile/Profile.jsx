@@ -4,6 +4,7 @@ export const Profile = () => {
   return (
     <>
       <Sidebar />
+
       <div className="profile-container">
         <p className="text-2xl font-bold text-black">Profile</p>
         <div className="profile-content">
