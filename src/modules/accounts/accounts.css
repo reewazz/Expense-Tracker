@@ -24,53 +24,51 @@
 }
 .account-cards {
   display: flex;
-  flex-direction: column;
-  gap: 3vh;
-  .new-card {
-    padding: 50px 20px;
-    border: 1px solid black;
-    border-style: dashed;
-    width: 24.5%;
-    text-align: center;
-  }
+  flex-wrap: wrap; /* Allow cards to wrap to the next line */
+  gap: 10px;
 }
-.cards {
-  display: flex;
-  justify-content: space-between;
 
-  .card {
+.cards {
+  width: calc(
+    25% - 10px
+  ); /* Set width for each card to fit four cards in a row */
+  border: 1px solid #ccc; /* Light grey border */
+  padding: 10px; /* Reduced padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.card {
+  .bottom {
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
-    width: 30%;
-    padding: 10px;
-    margin-right: 10px;
-    flex-direction: column;
-    .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      object-fit: cover;
-      img {
-        height: 3vw;
-        width: 3vw;
-      }
-    }
-    .bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      i {
-        font-size: 1.5rem;
-        padding: 2px;
-        transition: 0.3s all ease-in-out;
-        &:hover {
-          font-size: 1.8rem;
-        }
+    align-items: flex-end;
+    i {
+      font-size: 1.5rem;
+      padding: 2px;
+      transition: 0.3s all ease-in-out;
+      &:hover {
+        font-size: 1.8rem;
       }
     }
   }
 }
+.card .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card .top img {
+  height: 40px; /* Fixed height */
+  width: 40px; /* Fixed width */
+  object-fit: cover;
+}
+
 .stats {
   text-align: center;
   display: flex;

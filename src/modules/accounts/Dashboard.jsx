@@ -6,17 +6,36 @@ import TransactionTable from "./TransactionTable";
 import "./accounts.css";
 import { BarCharts } from "../charts/Barchart";
 import { MainSchedule } from "../scheduleTransactions/MainSchedule";
+import { useEffect, useState } from "react";
+import { Card } from "./Card";
+import { CardDashboard } from "./CardDashboard";
 
 export const Dashboard = () => {
-  const cards = [
-    // This should ideally come from a state or props if it's dynamic
+  const [cards, setCards] = useState([
     {
       name: "NIMB",
       imageUrl:
         "https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg",
       amount: "3000",
     },
-  ];
+    // Add more cards as needed
+  ]);
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/cards");
+        if (!response.ok) {
+          throw new Error("Failed to fetch cards");
+        }
+        const data = await response.json();
+        setCards(data);
+      } catch (error) {
+        console.error("Error:", error.message);
+      }
+    };
+
+    fetchCards();
+  }, []);
   return (
     <div>
       <Sidebar />
@@ -98,43 +117,17 @@ export const Dashboard = () => {
           </div>
           <div className="accounts">
             <p className="text-2xl font-bold text-black">Accounts</p>
-            <div className="account-cards">
+            <div className="account-cards ">
               {cards.map((card, index) => (
                 <div className="cards" key={index}>
-                  <div className="card">
-                    <div className="top">
-                      <p className="text-xl font-bold text-black">
-                        {card.name}
-                      </p>
-                      <img
-                        src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div className="bottom">
-                      <p className="text-xl font-bold text-black">
-                        {" "}
-                        {card.amount}{" "}
-                      </p>
-                      <p className="text-l font-bold text-grey">Rs. 3000</p>
-                    </div>
-                  </div>
+                  <CardDashboard
+                    name={card.name}
+                    imageUrl={card.imageUrl}
+                    amount={card.amount}
+                  />
                 </div>
               ))}
 
-              {/* <div className="card">
-                <div className="top">
-                  <p className="text-xl font-bold text-black">Esewa</p>
-                  <img
-                    src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="bottom">
-                  <p className="text-xl font-bold text-black">Rs. 3000</p>
-                  <p className="text-l font-bold text-grey">Rs. 3000</p>
-                </div>
-              </div> */}
               {/* <div className="card">
                   <div className="top">
                     <p className="text-xl font-bold text-black">Esewa</p>
