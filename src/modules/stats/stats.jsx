@@ -3,7 +3,34 @@ import { BarCharts } from "../charts/Barchart";
 import { Sidebar } from "../partials/Sidebar";
 import { RingProgress } from "@mantine/core";
 import "./stats.css";
+import { CardDashboard } from "../accounts/CardDashboard";
+import { useEffect, useState } from "react";
 export const Stats = () => {
+  const [cards, setCards] = useState([
+    {
+      name: "NIMB",
+      imageUrl:
+        "https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg",
+      amount: "3000",
+    },
+    // Add more cards as needed
+  ]);
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/cards");
+        if (!response.ok) {
+          throw new Error("Failed to fetch cards");
+        }
+        const data = await response.json();
+        setCards(data);
+      } catch (error) {
+        console.error("Error:", error.message);
+      }
+    };
+
+    fetchCards();
+  }, []);
   return (
     <>
       <Sidebar />
@@ -73,8 +100,19 @@ export const Stats = () => {
         <p className="text-xl font-bold text-black">
           Top accounts with transactions
         </p>
-        <div className="cards">
-          <div className="card">
+        <div>
+          <div className="account-cards ">
+            {cards.map((card, index) => (
+              <div className="cards" key={index}>
+                <CardDashboard
+                  name={card.name}
+                  imageUrl={card.imageUrl}
+                  amount={card.amount}
+                />
+              </div>
+            ))}
+          </div>
+          {/* <div className="card">
             <div className="top">
               <p className="text-xl font-bold text-black">Esewa</p>
               <img
@@ -133,7 +171,8 @@ export const Stats = () => {
                 <p className="text-xl font-bold text-grey">Rs. 3000</p>
               </div>
             </div>
-          </div>
+          </div> */}
+          <CardDashboard />
         </div>
         <div className="charts">
           <div className="piechart">

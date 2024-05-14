@@ -28,8 +28,33 @@ export const Accountlist = () => {
     },
     // Add more cards as needed
   ]);
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/cards");
+        if (!response.ok) {
+          throw new Error("Failed to fetch cards");
+        }
+        const data = await response.json();
+        setCards(data);
+      } catch (error) {
+        console.error("Error:", error.message);
+      }
+    };
+
+    fetchCards();
+  }, []);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const handleSubmit = async (e) => {
-    console.log("hbfejhfbchj");
     e.preventDefault();
     const newCard = { name, imageUrl, amount };
     setCards([...cards, newCard]);
@@ -57,33 +82,6 @@ export const Accountlist = () => {
       console.error("Error:", error.message);
     }
   };
-  const CardList = () => {
-    const [cards, setCards] = useState([]);
-
-    useEffect(() => {
-      const fetchCards = async () => {
-        try {
-          const response = await fetch("http://localhost:3000/cards");
-          if (!response.ok) {
-            throw new Error("Failed to fetch cards");
-          }
-          const data = await response.json();
-          setCards(data);
-        } catch (error) {
-          console.error("Error:", error.message);
-        }
-      };
-
-      fetchCards();
-    }, []);
-  };
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const handleDelete = (index) => {
     const updatedCards = [...cards];
@@ -91,17 +89,12 @@ export const Accountlist = () => {
     setCards(updatedCards);
   };
 
-  // const handleAddCard = () => {
-  //   const newCard = { name, imageUrl, amount };
-  //   setCards([...cards, newCard]);
-  //   setOpen(false); // Close the popup after adding the card
-  // };
-
   const handleEdit = (index, newData) => {
     const updatedCards = [...cards];
     updatedCards[index] = newData;
     setCards(updatedCards);
   };
+
   return (
     <>
       <Sidebar />
@@ -110,17 +103,13 @@ export const Accountlist = () => {
         <div className="account-cards">
           {cards.map((card, index) => (
             <div className="cards" key={index}>
-              {/* <Card
+              <Card
                 name={card.name}
                 imageUrl={card.imageUrl}
                 amount={card.amount}
                 onDelete={() => handleDelete(index)}
                 onEdit={(newData) => handleEdit(index, newData)}
-              /> */}
-              {cards.map((card, index) => (
-                <Card key={index} {...card} />
-              ))}
-              <CardList />
+              />
             </div>
           ))}
         </div>
