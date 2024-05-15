@@ -172,7 +172,6 @@ export const Stats = () => {
               </div>
             </div>
           </div> */}
-          <CardDashboard />
         </div>
         <div className="charts">
           <div className="piechart">
