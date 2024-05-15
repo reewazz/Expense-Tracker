@@ -1,4 +1,4 @@
-import TableModal from "./TableModal";
+import { TableModal } from "./TableModal";
 import React, { useState } from "react";
 export const MainSchedule = () => {
   const [transactions, setTransactions] = useState([]);

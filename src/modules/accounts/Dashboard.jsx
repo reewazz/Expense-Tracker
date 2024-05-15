@@ -7,8 +7,9 @@ import "./accounts.css";
 import { BarCharts } from "../charts/Barchart";
 import { MainSchedule } from "../scheduleTransactions/MainSchedule";
 import { useEffect, useState } from "react";
-import { Card } from "./Card";
 import { CardDashboard } from "./CardDashboard";
+import Modal from "../profile/Modal";
+import TransactionsList from "../transaction/TransactionList";
 
 export const Dashboard = () => {
   const [cards, setCards] = useState([
@@ -20,22 +21,22 @@ export const Dashboard = () => {
     },
     // Add more cards as needed
   ]);
-  useEffect(() => {
-    const fetchCards = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/cards");
-        if (!response.ok) {
-          throw new Error("Failed to fetch cards");
-        }
-        const data = await response.json();
-        setCards(data);
-      } catch (error) {
-        console.error("Error:", error.message);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchCards = async () => {
+  //     try {
+  //       const response = await fetch("http://localhost:3000/cards");
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch cards");
+  //       }
+  //       const data = await response.json();
+  //       setCards(data);
+  //     } catch (error) {
+  //       console.error("Error:", error.message);
+  //     }
+  //   };
 
-    fetchCards();
-  }, []);
+  //   fetchCards();
+  // }, []);
   return (
     <div>
       <Sidebar />
@@ -149,7 +150,7 @@ export const Dashboard = () => {
               Latest Transactions
             </p>
 
-            <TransactionTable />
+            <Modal />
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Modal.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,20 +7,35 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-// Ensure this import path matches your CSS file's location
 
 function createData(statement, category, account, amount) {
   return { statement, category, account, amount };
 }
 
 function Modal() {
-  const [rows, setRows] = useState([
-    createData("Family Dinner at Thasang Thakali", "Food", 6.0, 24),
-    createData("Ice cream sandwich", "Rent", 237, 37),
-    createData("Eclair", 262, 16.0, 24),
-    createData("Cupcake", 305, 3.7, 67),
-    createData("Gingerbread", 356, 16.0, 49),
-  ]);
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/transaction");
+        const result = await response.json();
+        console.log("Fetched data:", result); // Log the fetched data
+
+        if (Array.isArray(result.data)) {
+          setRows(result.data);
+        } else {
+          console.error("Fetched data is not an array:", result.data);
+          setRows([]);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setRows([]);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
 
   const [formData, setFormData] = useState({
     statement: "",
@@ -34,7 +49,7 @@ function Modal() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newRow = createData(
       formData.statement,
@@ -42,14 +57,30 @@ function Modal() {
       formData.account,
       formData.amount
     );
-    setRows([...rows, newRow]);
-    setFormData({
-      statement: "",
-      category: "",
-      account: "",
-      amount: "",
-    });
-    toggleModal();
+
+    try {
+      const response = await fetch("http://localhost:8000/transaction", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setRows((prevRows) => [...prevRows, result.data]);
+        setFormData({
+          statement: "",
+          category: "",
+          account: "",
+          amount: "",
+        });
+        toggleModal();
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -104,7 +135,7 @@ function Modal() {
                   <option>Select Category</option>
                   <option>Food</option>
                   <option>Rent</option>
-                  <option> Transport</option>
+                  <option>Transport</option>
                 </select>
                 <select
                   name="account"
@@ -114,7 +145,7 @@ function Modal() {
                   <option>Select Account</option>
                   <option>Cash</option>
                   <option>Card</option>
-                  <option> Digital wallet</option>
+                  <option>Digital wallet</option>
                 </select>
               </div>
               <input
@@ -139,21 +170,19 @@ function Modal() {
             <TableRow>
               <TableCell>Statement</TableCell>
               <TableCell align="right">Category</TableCell>
-              <TableCell align="right">Account&nbsp;(g)</TableCell>
-              <TableCell align="right">Amount&nbsp;(g)</TableCell>
+              <TableCell align="right">Account</TableCell>
+              <TableCell align="right">Amount</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <TableRow
-                className="row"
-                key={row.name}
+                key={row._id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
                   {row.statement}
                 </TableCell>
-
                 <TableCell align="right">{row.category}</TableCell>
                 <TableCell align="right">{row.account}</TableCell>
                 <TableCell align="right">{row.amount}</TableCell>

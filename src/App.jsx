@@ -17,6 +17,7 @@ import "react-calendar/dist/Calendar.css";
 import { Signup } from "./modules/authentication/Signup";
 import { Profile } from "./modules/profile/Profile";
 import { UserSettings } from "./modules/profile/UserSettings";
+// import { Login } from "./pages/Login";
 
 // import { Button } from '@mantine/core'
 // import '@mantine/core/styles.css';
@@ -27,6 +28,7 @@ function App() {
   return (
     <>
       <Routes>
+        {/* <Route exact path="/" element={<Login />} /> */}
         <Route exact path="/" element={<Dashboard />} />
         <Route path="/transactions" element={<Transactions />} />
         <Route path="/calendar" element={<Signup />} />
