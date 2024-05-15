@@ -29,16 +29,14 @@
 }
 
 .cards {
-  width: calc(
-    25% - 10px
-  ); /* Set width for each card to fit four cards in a row */
-  border: 1px solid #ccc; /* Light grey border */
-  padding: 10px; /* Reduced padding */
+  width: calc(25% - 10px);
+  border: 1px solid #ccc;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .card {

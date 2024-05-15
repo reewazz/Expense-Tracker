@@ -1,4 +1,4 @@
-import TableModal from "../scheduleTransactions/TableModal";
+import { TableModal } from "./TableModal";
 import { Sidebar } from "../partials/Sidebar";
 import "./schedule.css";
 
