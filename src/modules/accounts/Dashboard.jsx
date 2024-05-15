@@ -1,7 +1,5 @@
 import { CircularProgress } from "@mui/material";
 import { Sidebar } from "../partials/Sidebar";
-// import { BarChart } from '@mantine/charts';
-// import Card from '@mui/material/Card';
 import TransactionTable from "./TransactionTable";
 import "./accounts.css";
 import { BarCharts } from "../charts/Barchart";
@@ -21,22 +19,33 @@ export const Dashboard = () => {
     },
     // Add more cards as needed
   ]);
-  // useEffect(() => {
-  //   const fetchCards = async () => {
-  //     try {
-  //       const response = await fetch("http://localhost:3000/cards");
-  //       if (!response.ok) {
-  //         throw new Error("Failed to fetch cards");
-  //       }
-  //       const data = await response.json();
-  //       setCards(data);
-  //     } catch (error) {
-  //       console.error("Error:", error.message);
-  //     }
-  //   };
 
-  //   fetchCards();
-  // }, []);
+  const [scheduledRows, setScheduledRows] = useState([]);
+
+  useEffect(() => {
+    const fetchScheduledTransactions = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/scheduled-transaction"
+        );
+        const result = await response.json();
+        console.log("Fetched scheduled data:", result);
+
+        if (Array.isArray(result.data)) {
+          setScheduledRows(result.data);
+        } else {
+          console.error("Fetched scheduled data is not an array:", result.data);
+          setScheduledRows([]);
+        }
+      } catch (error) {
+        console.error("Error fetching scheduled data:", error);
+        setScheduledRows([]);
+      }
+    };
+
+    fetchScheduledTransactions();
+  }, []);
+
   return (
     <div>
       <Sidebar />
@@ -128,20 +137,6 @@ export const Dashboard = () => {
                   />
                 </div>
               ))}
-
-              {/* <div className="card">
-                  <div className="top">
-                    <p className="text-xl font-bold text-black">Esewa</p>
-                    <img
-                      src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="bottom">
-                    <p className="text-xl font-bold text-black">Rs. 3000</p>
-                    <p className="text-l font-bold text-grey">Rs. 3000</p>
-                  </div>
-                </div> */}
             </div>
           </div>
 
@@ -149,7 +144,6 @@ export const Dashboard = () => {
             <p className="text-xl font-bold text-black pt-5">
               Latest Transactions
             </p>
-
             <Modal />
           </div>
         </div>
@@ -171,7 +165,7 @@ export const Dashboard = () => {
             </div>
           </div>
           <div className="scheduled-expenses">
-            <MainSchedule />
+            <MainSchedule scheduledRows={scheduledRows} />
           </div>
         </div>
       </div>

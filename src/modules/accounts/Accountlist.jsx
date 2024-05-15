@@ -29,22 +29,22 @@ export const Accountlist = () => {
     // Add more cards as needed
   ]);
 
-  useEffect(() => {
-    const fetchCards = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/cards");
-        if (!response.ok) {
-          throw new Error("Failed to fetch cards");
-        }
-        const data = await response.json();
-        setCards(data);
-      } catch (error) {
-        console.error("Error:", error.message);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchCards = async () => {
+  //     try {
+  //       const response = await fetch("http://localhost:3000/cards");
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch cards");
+  //       }
+  //       const data = await response.json();
+  //       setCards(data);
+  //     } catch (error) {
+  //       console.error("Error:", error.message);
+  //     }
+  //   };
 
-    fetchCards();
-  }, []);
+  //   fetchCards();
+  // }, []);
 
   const handleClickOpen = () => {
     setOpen(true);
