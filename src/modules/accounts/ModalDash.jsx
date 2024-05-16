@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,31 +8,33 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-export const TableModal = () => {
-  const [scheduledRows, setScheduledRows] = useState([]);
+function createData(statement, category, account, amount) {
+  return { statement, category, account, amount };
+}
+
+export const ModalDash = () => {
+  const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    const fetchScheduledTransactions = async () => {
+    const fetchTransactions = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:8000/scheduled-transaction"
-        );
+        const response = await fetch("http://localhost:8000/transaction");
         const result = await response.json();
-        console.log("Fetched scheduled data:", result);
+        console.log("Fetched data:", result); // Log the fetched data
 
         if (Array.isArray(result.data)) {
-          setScheduledRows(result.data);
+          setRows(result.data);
         } else {
-          console.error("Fetched scheduled data is not an array:", result.data);
-          setScheduledRows([]);
+          console.error("Fetched data is not an array:", result.data);
+          setRows([]);
         }
       } catch (error) {
-        console.error("Error fetching scheduled data:", error);
-        setScheduledRows([]);
+        console.error("Error fetching data:", error);
+        setRows([]);
       }
     };
 
-    fetchScheduledTransactions();
+    fetchTransactions();
   }, []);
 
   const [formData, setFormData] = useState({
@@ -39,9 +42,6 @@ export const TableModal = () => {
     category: "",
     account: "",
     amount: "",
-    date: "",
-    period: "",
-    recursion: "",
   });
 
   const handleChange = (e) => {
@@ -51,30 +51,30 @@ export const TableModal = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const newRow = createData(
+      formData.statement,
+      formData.category,
+      formData.account,
+      formData.amount
+    );
 
     try {
-      const response = await fetch(
-        "http://localhost:8000/scheduled-transaction",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("http://localhost:8000/transaction", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       if (response.ok) {
         const result = await response.json();
-        setScheduledRows((prevRows) => [...prevRows, result.data]);
+        setRows((prevRows) => [...prevRows, result.data]);
         setFormData({
           statement: "",
           category: "",
           account: "",
           amount: "",
-          date: "",
-          period: "",
-          recursion: "",
         });
         toggleModal();
       }
@@ -89,14 +89,13 @@ export const TableModal = () => {
 
   return (
     <div>
-      <button onClick={toggleModal}>Add Scheduled Transaction</button>
       {isOpen && (
         <div className="modal">
           <div className="modal-content">
             <span className="close-button" onClick={toggleModal}>
               &times;
             </span>
-            <h2>Add Scheduled Transaction</h2>
+            <h2>Add Transaction</h2>
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -111,6 +110,26 @@ export const TableModal = () => {
                 value={formData.date}
                 onChange={handleChange}
               />
+              <div className="radio">
+                <div className="radio-item">
+                  <input
+                    type="radio"
+                    id="income"
+                    name="transactionType"
+                    value="income"
+                  />
+                  <label htmlFor="income">Income</label>
+                </div>
+                <div className="radio-item">
+                  <input
+                    type="radio"
+                    id="expense"
+                    name="transactionType"
+                    value="expense"
+                  />
+                  <label htmlFor="expense">Expense</label>
+                </div>
+              </div>
               <div className="selection">
                 <select
                   name="category"
@@ -140,18 +159,7 @@ export const TableModal = () => {
                 onChange={handleChange}
                 placeholder="Amount"
               />
-
-              <select
-                name="recursion"
-                value={formData.recursion}
-                onChange={handleChange}
-              >
-                <option>Recursion</option>
-                <option>Daily</option>
-                <option>Weekly</option>
-                <option>Monthly</option>
-              </select>
-
+              <input type="file" />
               <button type="submit">Save</button>
               <button type="button" onClick={toggleModal}>
                 Cancel
@@ -160,20 +168,26 @@ export const TableModal = () => {
           </div>
         </div>
       )}
-
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} size="large" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell>Statement</TableCell>
-              <TableCell align="right">Category</TableCell>
-
-              <TableCell align="right">Recursion</TableCell>
-              <TableCell align="right">Amount</TableCell>
+              <TableCell>
+                <strong>Statement</strong>
+              </TableCell>
+              <TableCell align="right">
+                <strong>Category</strong>
+              </TableCell>
+              <TableCell align="right">
+                <strong>Account</strong>{" "}
+              </TableCell>
+              <TableCell align="right">
+                <strong>Amount</strong>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {scheduledRows.map((row) => (
+            {rows.map((row) => (
               <TableRow
                 key={row._id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -182,8 +196,7 @@ export const TableModal = () => {
                   {row.statement}
                 </TableCell>
                 <TableCell align="right">{row.category}</TableCell>
-
-                <TableCell align="right">{row.recursion}</TableCell>
+                <TableCell align="right">{row.account}</TableCell>
                 <TableCell align="right">{row.amount}</TableCell>
               </TableRow>
             ))}

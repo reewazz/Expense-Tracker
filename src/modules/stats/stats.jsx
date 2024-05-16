@@ -6,24 +6,23 @@ import "./stats.css";
 import { CardDashboard } from "../accounts/CardDashboard";
 import { useEffect, useState } from "react";
 export const Stats = () => {
-  const [cards, setCards] = useState([
-    {
-      name: "NIMB",
-      imageUrl:
-        "https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg",
-      amount: "3000",
-    },
-    // Add more cards as needed
-  ]);
+  const [cards, setCards] = useState([]);
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await fetch("http://localhost:3000/cards");
+        const response = await fetch("http://localhost:8000/cards");
         if (!response.ok) {
           throw new Error("Failed to fetch cards");
         }
-        const data = await response.json();
-        setCards(data);
+        const result = await response.json();
+        console.log("Fetched data:", result); // Log the data
+        if (Array.isArray(result.data)) {
+          setCards(result.data);
+        } else if (result.data && typeof data === "object") {
+          setCards(Object.values(result.data));
+        } else {
+          throw new Error("Data is not an array or object");
+        }
       } catch (error) {
         console.error("Error:", error.message);
       }
@@ -102,9 +101,10 @@ export const Stats = () => {
         </p>
         <div>
           <div className="account-cards ">
-            {cards.map((card, index) => (
+            {cards.slice(0, 4).map((card, index) => (
               <div className="cards" key={index}>
                 <CardDashboard
+                  key={index}
                   name={card.name}
                   imageUrl={card.imageUrl}
                   amount={card.amount}
@@ -183,9 +183,9 @@ export const Stats = () => {
               size={350}
               thickness={50}
               sections={[
-                { value: 40, color: "cyan", tooltip: "Documents 40 Gb" },
-                { value: 25, color: "orange", tooltip: "Apps  25 Gb" },
-                { value: 15, color: "grape", tooltip: "Other  15 Gb" },
+                { value: 40, color: "cyan", tooltip: "Rent 40%" },
+                { value: 25, color: "orange", tooltip: "Food 25%" },
+                { value: 15, color: "grape", tooltip: "Transport 15%" },
               ]}
             />
           </div>

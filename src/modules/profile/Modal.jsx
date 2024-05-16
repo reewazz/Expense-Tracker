@@ -105,7 +105,12 @@ function Modal() {
                 value={formData.statement}
                 onChange={handleChange}
               />
-              <input type="date" />
+              <input
+                type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+              />
               <div className="radio">
                 <div className="radio-item">
                   <input
@@ -168,10 +173,18 @@ function Modal() {
         <Table sx={{ minWidth: 650 }} size="large" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell>Statement</TableCell>
-              <TableCell align="right">Category</TableCell>
-              <TableCell align="right">Account</TableCell>
-              <TableCell align="right">Amount</TableCell>
+              <TableCell>
+                <strong>Statement</strong>
+              </TableCell>
+              <TableCell align="right">
+                <strong>Category</strong>
+              </TableCell>
+              <TableCell align="right">
+                <strong>Account</strong>{" "}
+              </TableCell>
+              <TableCell align="right">
+                <strong>Amount</strong>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

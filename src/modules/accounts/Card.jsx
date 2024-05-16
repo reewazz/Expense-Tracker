@@ -13,7 +13,10 @@ export const Card = ({ name, imageUrl, amount, onDelete, onEdit }) => {
           <p className="text-xl font-bold text-grey">Rs. {amount}</p>
         </div>
         <div className="buttons">
-          <i className="ri-pencil-line" onClick={onEdit}></i>
+          <i
+            className="ri-pencil-line"
+            onClick={() => onEdit({ name, imageUrl, amount })}
+          ></i>
           <i className="ri-delete-bin-6-line" onClick={onDelete}></i>
         </div>
       </div>

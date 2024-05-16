@@ -6,21 +6,58 @@ import { BarCharts } from "../charts/Barchart";
 import { MainSchedule } from "../scheduleTransactions/MainSchedule";
 import { useEffect, useState } from "react";
 import { CardDashboard } from "./CardDashboard";
-import Modal from "../profile/Modal";
-import TransactionsList from "../transaction/TransactionList";
+import { ModalDash } from "./ModalDash";
 
 export const Dashboard = () => {
-  const [cards, setCards] = useState([
-    {
-      name: "NIMB",
-      imageUrl:
-        "https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg",
-      amount: "3000",
-    },
-    // Add more cards as needed
-  ]);
+  const [cards, setCards] = useState([]);
 
   const [scheduledRows, setScheduledRows] = useState([]);
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/transaction");
+        const result = await response.json();
+        console.log("Fetched data:", result); // Log the fetched data
+
+        if (Array.isArray(result.data)) {
+          setRows(result.data);
+        } else {
+          console.error("Fetched data is not an array:", result.data);
+          setRows([]);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setRows([]);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/cards");
+        if (!response.ok) {
+          throw new Error("Failed to fetch cards");
+        }
+        const result = await response.json();
+        console.log("Fetched data:", result); // Log the data
+        if (Array.isArray(result.data)) {
+          setCards(result.data);
+        } else if (result.data && typeof data === "object") {
+          setCards(Object.values(result.data));
+        } else {
+          throw new Error("Data is not an array or object");
+        }
+      } catch (error) {
+        console.error("Error:", error.message);
+      }
+    };
+
+    fetchCards();
+  }, []);
 
   useEffect(() => {
     const fetchScheduledTransactions = async () => {
@@ -87,9 +124,7 @@ export const Dashboard = () => {
                         <h3 className="text-sm leading-6 font-medium text-gray-400">
                           Total Balance
                         </h3>
-                        <p className="text-xl font-bold text-black">
-                          Rs. 69,699
-                        </p>
+                        <p className="text-xl font-bold text-black">Rs. 898</p>
                       </div>
                     </div>
                   </div>
@@ -101,9 +136,7 @@ export const Dashboard = () => {
                         <h3 className="text-sm leading-6 font-medium text-gray-400">
                           Total Expenses
                         </h3>
-                        <p className="text-xl font-bold text-black">
-                          Rs. 6,969
-                        </p>
+                        <p className="text-xl font-bold text-black">Rs. 958</p>
                       </div>
                     </div>
                   </div>
@@ -128,9 +161,10 @@ export const Dashboard = () => {
           <div className="accounts">
             <p className="text-2xl font-bold text-black">Accounts</p>
             <div className="account-cards ">
-              {cards.map((card, index) => (
+              {cards.slice(0, 4).map((card, index) => (
                 <div className="cards" key={index}>
                   <CardDashboard
+                    key={index}
                     name={card.name}
                     imageUrl={card.imageUrl}
                     amount={card.amount}
@@ -144,7 +178,7 @@ export const Dashboard = () => {
             <p className="text-xl font-bold text-black pt-5">
               Latest Transactions
             </p>
-            <Modal />
+            <ModalDash />
           </div>
         </div>
 

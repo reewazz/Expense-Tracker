@@ -19,32 +19,31 @@ export const Accountlist = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("");
-  const [cards, setCards] = useState([
-    {
-      name: "NIMB",
-      imageUrl:
-        "https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2020/01/NIBL-logo.jpg",
-      amount: "3000",
-    },
-    // Add more cards as needed
-  ]);
+  const [cards, setCards] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchCards = async () => {
-  //     try {
-  //       const response = await fetch("http://localhost:3000/cards");
-  //       if (!response.ok) {
-  //         throw new Error("Failed to fetch cards");
-  //       }
-  //       const data = await response.json();
-  //       setCards(data);
-  //     } catch (error) {
-  //       console.error("Error:", error.message);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/cards");
+        if (!response.ok) {
+          throw new Error("Failed to fetch cards");
+        }
+        const result = await response.json();
+        console.log("Fetched data:", result); // Log the data
+        if (Array.isArray(result.data)) {
+          setCards(result.data);
+        } else if (result.data && typeof data === "object") {
+          setCards(Object.values(result.data));
+        } else {
+          throw new Error("Data is not an array or object");
+        }
+      } catch (error) {
+        console.error("Error:", error.message);
+      }
+    };
 
-  //   fetchCards();
-  // }, []);
+    fetchCards();
+  }, []);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -61,19 +60,18 @@ export const Accountlist = () => {
     setOpen(false);
 
     try {
-      const response = await fetch("http://localhost:3000/cards", {
+      const response = await fetch("http://localhost:8000/cards", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ imageUrl, name, amount }),
+        body: JSON.stringify({ name, imageUrl, amount }),
       });
 
       if (!response.ok) {
         throw new Error("Failed to save data");
       }
 
-      // Optionally, you can clear the input fields after successful submission
       setImageUrl("");
       setName("");
       setAmount("");
@@ -103,6 +101,7 @@ export const Accountlist = () => {
         <div className="account-cards">
           {cards.map((card, index) => (
             <div className="cards" key={index}>
+              {console.log("Card Data:", card)}
               <Card
                 name={card.name}
                 imageUrl={card.imageUrl}
