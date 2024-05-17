@@ -10,7 +10,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { InputLabel, Select, TextField } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import { Card } from "./Card";
-
+import { TotalAmount } from "./TotalAmount"; // Import the new component
 import "./accounts.css";
 
 export const Accountlist = () => {
@@ -32,7 +32,7 @@ export const Accountlist = () => {
         console.log("Fetched data:", result); // Log the data
         if (Array.isArray(result.data)) {
           setCards(result.data);
-        } else if (result.data && typeof data === "object") {
+        } else if (result.data && typeof result.data === "object") {
           setCards(Object.values(result.data));
         } else {
           throw new Error("Data is not an array or object");
@@ -44,6 +44,13 @@ export const Accountlist = () => {
 
     fetchCards();
   }, []);
+
+  const calculateTotalAmount = () => {
+    return cards.reduce(
+      (total, card) => total + parseFloat(card.amount || 0),
+      0
+    );
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -98,6 +105,7 @@ export const Accountlist = () => {
       <Sidebar />
       <div className="accounts-container">
         <p className="text-2xl font-bold text-black">Accounts</p>
+
         <div className="account-cards">
           {cards.map((card, index) => (
             <div className="cards" key={index}>
