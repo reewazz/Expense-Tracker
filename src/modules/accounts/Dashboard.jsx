@@ -7,12 +7,29 @@ import { MainSchedule } from "../scheduleTransactions/MainSchedule";
 import { useEffect, useState } from "react";
 import { CardDashboard } from "./CardDashboard";
 import { ModalDash } from "./ModalDash";
+import PropTypes from "prop-types";
+import { TotalAmount } from "./TotalAmount";
 
-export const Dashboard = () => {
+export const Dashboard = ({ totalAmount }) => {
   const [cards, setCards] = useState([]);
 
   const [scheduledRows, setScheduledRows] = useState([]);
   const [rows, setRows] = useState([]);
+  const [totals, setTotals] = useState({ totalIncome: 0, totalExpense: 0 });
+
+  const fetchTotals = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/transaction");
+      const data = await response.json();
+      setTotals(data);
+    } catch (error) {
+      console.error("Error fetching totals:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTotals();
+  }, []);
 
   useEffect(() => {
     const fetchTransactions = async () => {
@@ -124,7 +141,10 @@ export const Dashboard = () => {
                         <h3 className="text-sm leading-6 font-medium text-gray-400">
                           Total Balance
                         </h3>
-                        <p className="text-xl font-bold text-black">Rs. 898</p>
+                        <p className="text-xl font-bold text-black">
+                          {/* <TotalAmount totalAmount={calculateTotalAmount()} />{" "} */}
+                          Rs. 1,85,000
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -136,7 +156,9 @@ export const Dashboard = () => {
                         <h3 className="text-sm leading-6 font-medium text-gray-400">
                           Total Expenses
                         </h3>
-                        <p className="text-xl font-bold text-black">Rs. 958</p>
+                        <p className="text-xl font-bold text-black">
+                          Rs. {totals.totalExpense}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -146,10 +168,10 @@ export const Dashboard = () => {
                     <div className="sm:flex sm:items-start">
                       <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
                         <h3 className="text-sm leading-6 font-medium text-gray-400">
-                          Total Balance last 6 months
+                          Total Income
                         </h3>
                         <p className="text-xl font-bold text-black">
-                          Rs. 69,000
+                          Rs.{totals.totalIncome}
                         </p>
                       </div>
                     </div>

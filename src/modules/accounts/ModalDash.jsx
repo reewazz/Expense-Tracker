@@ -14,27 +14,27 @@ function createData(statement, category, account, amount) {
 
 export const ModalDash = () => {
   const [rows, setRows] = useState([]);
+  const [totals, setTotals] = useState({ totalIncome: 0, totalExpense: 0 });
+  const [isOpen, setIsOpen] = useState(false);
+
+  const fetchTotals = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/transaction");
+      const data = await response.json();
+      setTotals({
+        totalIncome: data.totalIncome,
+        totalExpense: data.totalExpense,
+      });
+      if (Array.isArray(data.transactions)) {
+        setRows(data.transactions);
+      }
+    } catch (error) {
+      console.error("Error fetching totals:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchTransactions = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/transaction");
-        const result = await response.json();
-        console.log("Fetched data:", result); // Log the fetched data
-
-        if (Array.isArray(result.data)) {
-          setRows(result.data);
-        } else {
-          console.error("Fetched data is not an array:", result.data);
-          setRows([]);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setRows([]);
-      }
-    };
-
-    fetchTransactions();
+    fetchTotals();
   }, []);
 
   const [formData, setFormData] = useState({
@@ -42,6 +42,8 @@ export const ModalDash = () => {
     category: "",
     account: "",
     amount: "",
+    date: "",
+    type: "",
   });
 
   const handleChange = (e) => {
@@ -51,12 +53,6 @@ export const ModalDash = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newRow = createData(
-      formData.statement,
-      formData.category,
-      formData.account,
-      formData.amount
-    );
 
     try {
       const response = await fetch("http://localhost:8000/transaction", {
@@ -69,21 +65,21 @@ export const ModalDash = () => {
 
       if (response.ok) {
         const result = await response.json();
-        setRows((prevRows) => [...prevRows, result.data]);
         setFormData({
           statement: "",
           category: "",
           account: "",
           amount: "",
+          date: "",
+          type: "",
         });
         toggleModal();
+        fetchTotals(); // Re-fetch totals and transactions after a successful submission
       }
     } catch (error) {
       console.error("Error:", error);
     }
   };
-
-  const [isOpen, setIsOpen] = useState(false);
 
   const toggleModal = () => setIsOpen(!isOpen);
 
@@ -110,26 +106,11 @@ export const ModalDash = () => {
                 value={formData.date}
                 onChange={handleChange}
               />
-              <div className="radio">
-                <div className="radio-item">
-                  <input
-                    type="radio"
-                    id="income"
-                    name="transactionType"
-                    value="income"
-                  />
-                  <label htmlFor="income">Income</label>
-                </div>
-                <div className="radio-item">
-                  <input
-                    type="radio"
-                    id="expense"
-                    name="transactionType"
-                    value="expense"
-                  />
-                  <label htmlFor="expense">Expense</label>
-                </div>
-              </div>
+              <select name="type" value={formData.type} onChange={handleChange}>
+                <option>Type</option>
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+              </select>
               <div className="selection">
                 <select
                   name="category"
@@ -137,9 +118,9 @@ export const ModalDash = () => {
                   onChange={handleChange}
                 >
                   <option>Select Category</option>
-                  <option>Food</option>
-                  <option>Rent</option>
-                  <option>Transport</option>
+                  <option value="Food">Food</option>
+                  <option value="Rent">Rent</option>
+                  <option value="Transport">Transport</option>
                 </select>
                 <select
                   name="account"
@@ -147,9 +128,9 @@ export const ModalDash = () => {
                   onChange={handleChange}
                 >
                   <option>Select Account</option>
-                  <option>Cash</option>
-                  <option>Card</option>
-                  <option>Digital wallet</option>
+                  <option value="Cash">Cash</option>
+                  <option value="Card">Card</option>
+                  <option value="Digital wallet">Digital wallet</option>
                 </select>
               </div>
               <input
@@ -168,6 +149,7 @@ export const ModalDash = () => {
           </div>
         </div>
       )}
+
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} size="large" aria-label="a dense table">
           <TableHead>

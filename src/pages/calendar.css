@@ -1,3 +1,6 @@
-.calendar-main{
-    padding: 1vh 8vw;
+.calendar-main {
+  padding: 1vh 8vw;
+}
+.left {
+  width: 20%;
 }
