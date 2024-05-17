@@ -14,26 +14,24 @@ function createData(statement, category, account, amount) {
 
 function Modal() {
   const [rows, setRows] = useState([]);
+  const fetchTransactions = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/transaction");
+      const result = await response.json();
+      console.log("Fetched data:", result); // Log the fetched data
 
-  useEffect(() => {
-    const fetchTransactions = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/transaction");
-        const result = await response.json();
-        console.log("Fetched data:", result); // Log the fetched data
-
-        if (Array.isArray(result.data)) {
-          setRows(result.data);
-        } else {
-          console.error("Fetched data is not an array:", result.data);
-          setRows([]);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
+      if (Array.isArray(result.data)) {
+        setRows(result.data);
+      } else {
+        console.error("Fetched data is not an array:", result.data);
         setRows([]);
       }
-    };
-
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setRows([]);
+    }
+  };
+  useEffect(() => {
     fetchTransactions();
   }, []);
 
@@ -77,6 +75,7 @@ function Modal() {
           amount: "",
         });
         toggleModal();
+        fetchTransactions();
       }
     } catch (error) {
       console.error("Error:", error);

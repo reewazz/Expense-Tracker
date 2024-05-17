@@ -1,4 +1,3 @@
-// import { Avatar } from "@mantine/core";
 import "./sidebar.css";
 import * as React from "react";
 import { NavLink } from "react-router-dom";
@@ -6,6 +5,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
+
 export const Sidebar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -15,6 +15,7 @@ export const Sidebar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <>
       <Menu
@@ -51,7 +52,6 @@ export const Sidebar = () => {
             <div className="avatar">
               <div className="flex -space-x-2 overflow-hidden">
                 <NavLink to="/profile" exact>
-                  {" "}
                   <img
                     onClick={handleClick}
                     className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
@@ -70,27 +70,58 @@ export const Sidebar = () => {
         </div>
         <div className="nav-items">
           <div className="nav-item">
-            <NavLink className="icons" to="/" exact>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "icons active-link" : "icons"
+              }
+              to="/"
+              exact
+            >
               <i className="ri-folder-2-line "></i>
             </NavLink>
-            <NavLink className="icons" to="/calendar" exact>
-              {" "}
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "icons active-link" : "icons"
+              }
+              to="/calendar"
+              exact
+            >
               <i className="ri-calendar-2-line "></i>
             </NavLink>
-            <NavLink className="icons" to="/transactions" exact>
-              {" "}
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "icons active-link" : "icons"
+              }
+              to="/transactions"
+              exact
+            >
               <i className="ri-pages-line "></i>
             </NavLink>
-            <NavLink className="icons" to="/stats" exact>
-              {" "}
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "icons active-link" : "icons"
+              }
+              to="/stats"
+              exact
+            >
               <i className="ri-bar-chart-2-line "></i>
             </NavLink>
-            <NavLink className="icons" to="/schedule" exact>
-              {" "}
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "icons active-link" : "icons"
+              }
+              to="/schedule"
+              exact
+            >
               <i className="ri-time-line"></i>
             </NavLink>
-            <NavLink className="icons" to="/accountlist" exact>
-              {" "}
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "icons active-link" : "icons"
+              }
+              to="/accountlist"
+              exact
+            >
               <i className="ri-server-line "></i>
             </NavLink>
           </div>

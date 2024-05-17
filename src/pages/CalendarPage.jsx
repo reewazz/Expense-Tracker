@@ -46,7 +46,9 @@ export const CalendarPage = () => {
       <div className="calendar-main">
         <div className="left">
           <Calendar />
-          <MainSchedule scheduledRows={scheduledRows} />
+          <div className="scheduled-expenses">
+            <MainSchedule scheduledRows={scheduledRows} />
+          </div>
         </div>
         <div className="right"></div>
       </div>

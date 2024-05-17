@@ -66,6 +66,7 @@ button[type="button"] {
 .radio {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 .selection {
   display: flex;
